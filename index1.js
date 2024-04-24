@@ -4,7 +4,7 @@ const { Readable } = require('stream');
 const { google } = require('googleapis');
 const { MongoClient } = require('mongodb');
 const fs = require('fs');
-import puppeteer from 'puppeteer';
+//import puppeteer from 'puppeteer';
 // const { MongoStore } = require('wwebjs-mongo');
 //const mongoose = require('mongoose');
 // npm i qrcode-terminal whatsapp-web.js stream googleapis mongodb fs wwebjs-mongo mongoose
@@ -212,17 +212,17 @@ client.on('message', async message => {
     
 });
 
-// (async () => {
-//     await connectToDB();
-//     await client.initialize();
-// })();
 (async () => {
-    // Initialize Puppeteer browser
-    const browser = await puppeteer.launch({
-      executablePath: '/usr/bin/google-chrome',
-      args: [] // You can add additional arguments if needed
-    });
-
     await connectToDB();
     await client.initialize();
 })();
+// (async () => {
+//     // Initialize Puppeteer browser
+//     const browser = await puppeteer.launch({
+//       executablePath: '/usr/bin/google-chrome',
+//       args: [] // You can add additional arguments if needed
+//     });
+
+//     await connectToDB();
+//     await client.initialize();
+// })();
