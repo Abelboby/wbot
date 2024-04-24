@@ -1,0 +1,21 @@
+{
+  "name": "wbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index1.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "googleapis": "^129.0.0",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.3.2",
+    "qrcode-terminal": "^0.12.0",
+    "stream": "^0.0.2",
+    "whatsapp-web.js": "github:pedroslopez/whatsapp-web.js#webpack-exodus",
+    "wwebjs-mongo": "^1.1.0"
+  }
+}
