@@ -80,17 +80,17 @@ async function uploadFile(authClient, base64Data, fileName, folderId) {
 
 
 
-const client = new Client({
-    authStrategy: new LocalAuth(),
-});
 // const client = new Client({
 //     authStrategy: new LocalAuth(),
-//     puppeteer: {
-//         executablePath: process.env.CHROME_BIN || undefined,
-//         headless: true,
-//         args: ['--no-sandbox']
-//     }
 // });
+const client = new Client({
+    authStrategy: new LocalAuth(),
+    puppeteer: {
+        executablePath: process.env.CHROME_BIN || undefined,
+        headless: true,
+        args: ['--no-sandbox']
+    }
+});
 
 
 client.on('qr', async qr => {
