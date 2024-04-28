@@ -17,6 +17,7 @@
     "qrcode-terminal": "^0.12.0",
     "stream": "^0.0.2",
     "whatsapp-web.js": "github:pedroslopez/whatsapp-web.js#webpack-exodus",
-    "wwebjs-mongo": "^1.1.0"
+    "wwebjs-mongo": "^1.1.0",
+    "next": "^12.0.0"
   }
 }
