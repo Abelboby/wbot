@@ -1,3 +1,12 @@
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
 const { PDFDocument } = require('pdf-lib');
 const qrcode = require('qrcode-terminal');
 const { Client, LocalAuth, Buttons } = require('whatsapp-web.js');
@@ -71,17 +80,17 @@ async function uploadFile(authClient, base64Data, fileName, folderId) {
 
 
 
-// const client = new Client({
-//     authStrategy: new LocalAuth(),
-// });
 const client = new Client({
     authStrategy: new LocalAuth(),
-    puppeteer: {
-        executablePath: process.env.CHROME_BIN || undefined,
-        headless: true,
-        args: ['--no-sandbox']
-    }
 });
+// const client = new Client({
+//     authStrategy: new LocalAuth(),
+//     puppeteer: {
+//         executablePath: process.env.CHROME_BIN || undefined,
+//         headless: true,
+//         args: ['--no-sandbox']
+//     }
+// });
 
 
 client.on('qr', async qr => {
@@ -124,7 +133,8 @@ async function insertFilenameToDB(filename,collectionName) {
 let pendingPDFs = [];
 let originalFileName;
 let mergemedia;
-client.on('message', async message => {
+client.on('message', async message1 => {
+  const message = message1.body.toLowerCase();
   const senderPhoneNumber = message.from;
   const phoneNumberDigits = senderPhoneNumber.replace(/\D/g, '').slice(-10);
   const collectionName = phoneNumberDigits;
@@ -317,4 +327,6 @@ client.on('message', async message => {
     await client.initialize();
 })();
 
-
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
